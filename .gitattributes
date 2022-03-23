@@ -1,3 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 *.app filter=lfs diff=lfs merge=lfs -text
+sharedassests1.assets.resS filter=lfs diff=lfs merge=lfs -text
+ArtifactDB filter=lfs diff=lfs merge=lfs -text
+*.resS filter=lfs diff=lfs merge=lfs -text
