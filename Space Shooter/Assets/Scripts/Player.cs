@@ -121,10 +121,10 @@ public class Player : MonoBehaviour{
 
         //wrapping the X axis' 
         if (transform.position.x > 11){
-            transform.position = new Vector3(-11, transform.position.y, 0);
+            transform.position = new Vector3(-10, transform.position.y, 0);
         }
         else if (transform.position.x < -11){
-            transform.position = new Vector3(11, transform.position.y, 0);
+            transform.position = new Vector3(10, transform.position.y, 0);
         }//end if ekse
 
     }//end movement
@@ -238,4 +238,18 @@ public class Player : MonoBehaviour{
         _score += points;
         _uiManager.UpdateScore(_score);
     }
+
+    public void addlife(){
+        if(_lives == 2){
+            _lives = 3;
+            _leftEngine.SetActive(false);
+            _uiManager.UpdateLives(_lives);
+        }
+        if(_lives == 1){
+            _lives = 2;
+            _rightEngine.SetActive(false);
+            _uiManager.UpdateLives(_lives);
+        }
+    }
+
 }//end class

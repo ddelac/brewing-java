@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637840896104716355
+      ticks: 637848611469841835
     m_Hash: 736701268
   m_LockFileStatus:
     m_FilePath: C:/Users/hulis/Documents/cs371/brewing-java/Space Shooter/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637840896104716355
+      ticks: 637848611469854341
     m_Hash: 3015287009
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -305,6 +305,7 @@ m_PackageAssets:
         - 2.0.11
         - 2.0.12
         - 2.0.14
+        - 2.0.15
         compatible:
         - 1.0.2
         - 1.0.3
@@ -323,7 +324,8 @@ m_PackageAssets:
         - 2.0.11
         - 2.0.12
         - 2.0.14
-        verified: 2.0.14
+        - 2.0.15
+        verified: 2.0.15
       dependencies:
       - name: com.unity.test-framework
         version: 1.1.9
