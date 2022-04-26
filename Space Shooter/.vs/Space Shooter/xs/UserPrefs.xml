@@ -1,16 +1,23 @@
 ﻿<Properties StartupConfiguration="{28FCF307-BCEB-DF00-C466-08C29A16E02D}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/level3/Prefabs/Scripts/level3BossLaser.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/level3/Scripts/Level3Boss.cs">
     <Files>
-      <File FileName="Assets/level3/Prefabs/Scripts/Level3Boss.cs" Line="37" Column="48" />
-      <File FileName="Assets/bossEntrance.cs" Line="32" Column="34" />
+      <File FileName="Assets/level3/Prefabs/Scripts/Level3Boss.cs" Line="25" Column="33" />
       <File FileName="Assets/level3/Prefabs/Scripts/boss4LaserAttack.cs" Line="17" Column="9" />
-      <File FileName="Assets/level3/Prefabs/Scripts/level3BossLaser.cs" Line="15" Column="10" />
-      <File FileName="Assets/level3/Prefabs/Scripts/Level3_Player.cs" Line="1" Column="1" />
+      <File FileName="Assets/level3/Prefabs/Scripts/level3BossLaser.cs" Line="23" Column="39" />
+      <File FileName="Assets/level3/Prefabs/Scripts/Level3_Player.cs" Line="51" Column="40" />
+      <File FileName="Assets/level3/Scripts/HealthBar.cs" Line="19" Column="62" />
+      <File FileName="Assets/level3/Scripts/BossShoot.cs" Line="68" Column="38" />
+      <File FileName="Assets/level3/Scripts/bossMissleAttack.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Player.cs" Line="148" Column="58" />
+      <File FileName="Assets/Scripts/UIManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="4" Column="1" />
+      <File FileName="Assets/level3/Scripts/Level3Manager.cs" Line="17" Column="37" />
+      <File FileName="Assets/level3/Scripts/Level3UIManager.cs" Line="28" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="015e81ab-2510-4a80-9bab-4672c7d48d80" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="de257047-b9a7-46a5-8dec-b39dbedd9c24" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

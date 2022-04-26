@@ -58,15 +58,23 @@
   <ItemGroup>
     <Compile Include="Assets/Scripts/Asteroid.cs" />
     <Compile Include="Assets/Scripts/Level2/enemy1.cs" />
+    <Compile Include="Assets/level3/Scripts/level3BossLaser.cs" />
+    <Compile Include="Assets/level3/Scripts/boss4LaserAttack.cs" />
+    <Compile Include="Assets/level3/Scripts/Bullet.cs" />
     <Compile Include="Assets/2D Pixel Spaceships (2 Small Ships + Explosions)/Scripts/SceneController.cs" />
     <Compile Include="Assets/Scripts/SpawnManager.cs" />
     <Compile Include="Assets/2D Pixel Spaceships (2 Small Ships + Explosions)/Scripts/ships/BaseBulletStarter.cs" />
+    <Compile Include="Assets/level3/Scripts/Missle.cs" />
     <Compile Include="Assets/2D Pixel Spaceships (2 Small Ships + Explosions)/Scripts/BaseFrameController.cs" />
     <Compile Include="Assets/2D Pixel Spaceships (2 Small Ships + Explosions)/Scripts/FrameController.cs" />
     <Compile Include="Assets/Sci-Fi UI/Demo_Assets/scripts/GUI_Demo.cs" />
+    <Compile Include="Assets/level3/Scripts/BossMissle.cs" />
+    <Compile Include="Assets/level3/Scripts/bossEntrance.cs" />
     <Compile Include="Assets/Scripts/Level2/enemy2.cs" />
     <Compile Include="Assets/Scripts/Level2/Laserdown.cs" />
+    <Compile Include="Assets/level3/Scripts/Level3_Player.cs" />
     <Compile Include="Assets/Scripts/Laser.cs" />
+    <Compile Include="Assets/level3/Scripts/Bomb.cs" />
     <Compile Include="Assets/Scripts/Level2/SpawnManagerlvl2.cs" />
     <Compile Include="Assets/Scripts/Level2/Asteroidlvl2.cs" />
     <Compile Include="Assets/Scripts/Level2/enemy3.cs" />
@@ -74,7 +82,9 @@
     <Compile Include="Assets/Scripts/Level2/xmov.cs" />
     <Compile Include="Assets/Scripts/Level2/poweruplvl2.cs" />
     <Compile Include="Assets/Scripts/Enemy.cs" />
+    <Compile Include="Assets/level3/Scripts/Level3Boss.cs" />
     <Compile Include="Assets/Scripts/Main_Menu/MainMenu.cs" />
+    <Compile Include="Assets/level3/Scripts/bossMissleAttack.cs" />
     <Compile Include="Assets/2D Pixel Spaceships (2 Small Ships + Explosions)/Scripts/ships/ExplosionController.cs" />
     <Compile Include="Assets/2D Pixel Spaceships (2 Small Ships + Explosions)/Scripts/Tools.cs" />
     <Compile Include="Assets/Scripts/Player.cs" />
@@ -83,15 +93,11 @@
     <Compile Include="Assets/Scripts/GameManager.cs" />
     <Compile Include="Assets/Scripts/UIManager.cs" />
     <Compile Include="Assets/Scripts/Powerup.cs" />
-    <Compile Include="Assets/level3/Prefabs/Scripts/Bomb.cs" />
-    <Compile Include="Assets/level3/Prefabs/Scripts/Bullet.cs" />
-    <Compile Include="Assets/level3/Prefabs/Scripts/Level3Boss.cs" />
-    <Compile Include="Assets/level3/Prefabs/Scripts/Missle.cs" />
-    <Compile Include="Assets/level3/Prefabs/Scripts/level3BossLaser.cs" />
-    <Compile Include="Assets/level3/Prefabs/Scripts/BossMissle.cs" />
-    <Compile Include="Assets/level3/Prefabs/Scripts/Level3_Player.cs" />
-    <Compile Include="Assets/level3/Prefabs/Scripts/bossEntrance.cs" />
-    <Compile Include="Assets/level3/Prefabs/Scripts/boss4LaserAttack.cs" />
+    <Compile Include="Assets/level3/Scripts/BossShoot.cs" />
+    <Compile Include="Assets/level3/Scripts/bossLaser.cs" />
+    <Compile Include="Assets/level3/Scripts/HealthBar.cs" />
+    <Compile Include="Assets/level3/Scripts/Level3Manager.cs" />
+    <Compile Include="Assets/level3/Scripts/Level3UIManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/spritefont_and_other/document_and_picturelist/readme.txt" />
