@@ -7,6 +7,7 @@ public class enemy2 : MonoBehaviour{
     [SerializeField]
     private float _speed = 4f;
     private Playerlvl2 _player;
+    private SpawnManagerlvl2 _spawn;
     [SerializeField]
     public GameObject explosionEffect;
     private AudioSource _audioSource;
@@ -25,68 +26,64 @@ public class enemy2 : MonoBehaviour{
         {
             Debug.LogError("Audio Source on enemy is NULL");
         }
+        _spawn = GameObject.Find("SpawnManager").GetComponent<SpawnManagerlvl2>();
+        if(_spawn == null)
+        {
+            Debug.LogError("spawn is null");
+        }
     }
 
     // Update is called once per frame
     void Update(){
         enmov();
+
+        if(transform.position.x > 11 || transform.position.x < -11){
+            Destroy(GetComponent<Collider2D>());
+            Destroy(this.gameObject);
+        }
     }
 
     void enmov(){
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
-        if (transform.position.y <= -4f){
-            float xPos = Random.Range(-10, 10);
-            transform.position = new Vector3(xPos, 7, 0);
-        }
-
         Vector3 direction = new Vector3(0f, 0f, .5f);
         transform.Rotate(direction);
     }
 
     private void OnTriggerEnter2D(Collider2D other){
-        //if other is player
-        //damage player
-        //destroy US
+
         if(other.tag == "Player"){
-            //damage player
+
             Playerlvl2 player = other.transform.GetComponent<Playerlvl2>();
-            if(player != null)
-            {
+            if(player != null){
                 player.Damage();
             }
-
-            //destroy collider
             Destroy(GetComponent<Collider2D>());
-            //trigger anim
-            //_anim.SetTrigger("OnEnemyDeath");
-            //_speed = 0;
-            //_audioSource.Play();
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
-            //Destroy(this.gameObject,2.5f);
-            
         }
 
-        //if other is laser
-        //destroy laser
-        //destroy us
-        if(other.tag == "Laser")
-        {
+        if(other.tag == "Laser" || other.tag == "TripleShot"){
             Destroy(other.gameObject);//destroy laser
-            if(_player != null)
-            {
+            if(_player != null){
                 _player.addScore(15);
+                _spawn.counter(1);
             }
 
-            //destroy collider
             Destroy(GetComponent<Collider2D>());
-            //trigger anim
-            //_anim.SetTrigger("OnEnemyDeath");
-            //_speed = 0;
-            //_audioSource.Play();
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
-            //Destroy(this.gameObject,2.5f);//destroy enemy
+
+        }
+
+        if(other.tag == "FMJ"){
+            if(_player != null){
+                _player.addScore(15);
+                _spawn.counter(1);
+            }
+
+            Destroy(GetComponent<Collider2D>());
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
 
         }
 

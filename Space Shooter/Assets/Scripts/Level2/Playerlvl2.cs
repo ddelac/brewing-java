@@ -3,61 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Playerlvl2 : MonoBehaviour{
-    //initialize global variables
 
-    //speed variables
-   [SerializeField]
-    private float _speed = 5f;//holds the global speed variable in m/s
+    [SerializeField]
+    private float _speed = 5f;
     private float _SpeedMutiliplier = 2;
 
-    //laser variables
     [SerializeField]
-    private GameObject _laserPrefab;//holds the gameobject of laserprefab for spawning lasers
+    private GameObject _laserPrefab;
     [SerializeField]
-    private GameObject _TripleShotPrefab;//holds the gameobject of TripleShot for spawning lasers
+    private GameObject _FMJPrefab;
     [SerializeField]
-    private float _fireRate = 0.5f;//holds the fire rate of the laser
-    private float _canFire = -.1f;//used to stop unlimited firing of the laser
+    private GameObject _TripleShotPrefab;
+    [SerializeField]
+    private float _fireRate = 0.5f;
+    private float _canFire = -.1f;
 
-    //lives and spawn manager
     [SerializeField]
-    private int _lives = 4;//holds the amount of lives the player has
-    private SpawnManagerlvl2 _spawnManager;//holds the gameobject of the spawn manager for spawning enemies
+    private int _lives = 4;
+    private SpawnManagerlvl2 _spawnManager;
 
-    //powerup boolean values
-    private bool _isTripleShotActive = false;//used to determine if triple shot is active
+    private bool _isTripleShotActive = false;
+    private bool _isFMJActive = false;
     private bool _isShieldActive = false;
 
-    //shield manager variables
     [SerializeField]
     private GameObject _shieldVisualizer;
 
-    //player damaage visualization variables
     [SerializeField]
     private GameObject _rightEngine;
     [SerializeField]
     private GameObject _leftEngine;
 
-    //ui manager variables
     [SerializeField]
-    private int _score;
-    private UIManager _uiManager;
+    public int _score;
+    private lvl2UI _uiManager;
 
-    //audio control variables
     [SerializeField]
     private AudioClip _laserShot;
     private AudioSource _audioSource;
 
-    //explosion effect
     [SerializeField]
     public GameObject explosionEffect;
 
-    // Start is called before the first frame update
     void Start(){
-        //take the current position and give it a start position(0,0,0)
+
         transform.position = new Vector3(0, 0, 0);
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManagerlvl2>();
-        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        _uiManager = GameObject.Find("Canvas").GetComponent<lvl2UI>();
         _audioSource = GetComponent<AudioSource>();
 
         //null check on _spawnManager
@@ -79,23 +71,18 @@ public class Playerlvl2 : MonoBehaviour{
         {
             _audioSource.clip = _laserShot;
         }
-    }//end start
+    }
 
-    // Update is called once per frame
+
     void Update(){
-        //call movement
         movement();
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
-        {
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire){
             shooting();
         }
-            
-
-    }//end update
+    }
 
     void movement(){
 
-        //movement 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
@@ -109,17 +96,13 @@ public class Playerlvl2 : MonoBehaviour{
 
 
         //cieling and floor on Y axis 
-        if (transform.position.y >= 2){
-            transform.position = new Vector3(transform.position.x, 2, 0);
+        if (transform.position.y >= 4){
+            transform.position = new Vector3(transform.position.x, 4, 0);
         }
         else if (transform.position.y <= -4){
             transform.position = new Vector3(transform.position.x, -4, 0);
-        }//end if else
-        //optimization of above code
-        //transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.posotion.y,-4,0),0);
-        //Math.Clamp(variable to clamp, value 1, value 2) keeps clamped variable between value 1 and value 2
+        }
 
-        //wrapping the X axis' 
         if (transform.position.x > 11){
             transform.position = new Vector3(-10, transform.position.y, 0);
         }
@@ -129,30 +112,26 @@ public class Playerlvl2 : MonoBehaviour{
 
     }//end movement
 
-    void shooting()
-    {
-        //if i hit the space key
-        //spawn game object
-        //Debug.Log("Space Key Pressed");
-        //Shows message in the terminal if working properly
+    void shooting(){
         _canFire = Time.time + _fireRate;
-        if (_isTripleShotActive)
-        {
-            //instantiate 3 lasers(triple shot prefab)
+        if (_isTripleShotActive){
             Instantiate(_TripleShotPrefab, transform.position, Quaternion.identity);
+        }if(_isFMJActive == true){
+            Instantiate(_FMJPrefab, transform.position, Quaternion.identity);
         }
-        else
-        {
-            //instantiate 1 laser                          //offset for laser to instantiate above player and not in player
-
+        else{
             Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.25f, 0), Quaternion.identity);
-
         }
-
-        //play the audio clip for firing the laser
         _audioSource.Play();
-       
-       
+    }
+
+    private void OnTriggerEnter2D(Collider2D other){
+        if(other.tag == "EnemyLaser"){
+            Destroy(other.gameObject);
+            Damage();
+            Destroy(GetComponent<Collider2D>());
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        }
     }
 
     public void Damage()
@@ -210,6 +189,19 @@ public class Playerlvl2 : MonoBehaviour{
 
     }
 
+        public void onFMJCollection()
+    {
+        _isFMJActive = true;
+        StartCoroutine(FMJPowerDown());
+    }
+
+    IEnumerator FMJPowerDown()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _isFMJActive = false;
+
+    }
+
     public void onSpeedBoostCollection()
     {
         _speed *= _SpeedMutiliplier;
@@ -237,6 +229,7 @@ public class Playerlvl2 : MonoBehaviour{
     {
         _score += points;
         _uiManager.UpdateScore(_score);
+
     }
 
     public void addlife(){

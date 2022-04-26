@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class enemy3 : MonoBehaviour
 {
     public enum FollowType{
@@ -15,6 +16,7 @@ public class enemy3 : MonoBehaviour
     [SerializeField]
     private GameObject _laserPrefab;
     private Playerlvl2 _player;
+    private SpawnManagerlvl2 _spawn;
     [SerializeField]
     public GameObject explosionEffect;
     private AudioSource _audioSource;
@@ -22,9 +24,9 @@ public class enemy3 : MonoBehaviour
     public xmov Path;
     public float Speed = 1;
     public float MaxDistanceToGoal = .2f;
-    [SerializeField]
-    private float _fireRate = 0.5f;//holds the fire rate of the laser
-    private float _canFire = -5f;
+
+    float timer;
+    int waitingTime;
 
 
     private IEnumerator<Transform> _currentPoint;
@@ -52,6 +54,12 @@ public class enemy3 : MonoBehaviour
         }
 
         transform.position = _currentPoint.Current.position;
+
+        _spawn = GameObject.Find("SpawnManager").GetComponent<SpawnManagerlvl2>();
+        if(_spawn == null)
+        {
+            Debug.LogError("spawn is null");
+        }
     }
 
     // Update is called once per frame
@@ -70,15 +78,22 @@ public class enemy3 : MonoBehaviour
             _currentPoint.MoveNext();
         }
 
-        StartCoroutine(shooting());
+        if(transform.position.x > 10){
+            Destroy(GetComponent<Collider2D>());
+            Destroy(this.gameObject);
+        }
+
+        timer += Time.deltaTime;
+        if(timer > Random.Range(1f, 3f)){
+            shooting();
+            timer = 0;
+        }
+        
     }
 
 
-    IEnumerator shooting(){
-        yield return new WaitForSeconds(1f);
-        _canFire = Time.time + _fireRate;
+    void shooting(){
         Instantiate(_laserPrefab, transform.position + new Vector3(0, -1.25f, 0), Quaternion.identity);
-        
     }
 
     private void OnTriggerEnter2D(Collider2D other){
@@ -105,26 +120,28 @@ public class enemy3 : MonoBehaviour
             
         }
 
-        //if other is laser
-        //destroy laser
-        //destroy us
-        if(other.tag == "Laser")
-        {
+        if(other.tag == "Laser" || other.tag == "TripleShot"){
             Destroy(other.gameObject);//destroy laser
             if(_player != null)
             {
                 _player.addScore(20);
+                _spawn.counter(2);
             }
 
-            //destroy collider
             Destroy(GetComponent<Collider2D>());
-            //trigger anim
-            //_anim.SetTrigger("OnEnemyDeath");
-            //_speed = 0;
-            //_audioSource.Play();
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
-            //Destroy(this.gameObject,2.5f);//destroy enemy
+        }
+
+        if(other.tag == "FMJ"){
+            if(_player != null){
+                _player.addScore(20);
+                _spawn.counter(1);
+            }
+
+            Destroy(GetComponent<Collider2D>());
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
 
         }
 

@@ -8,11 +8,8 @@ public class enemy1 : MonoBehaviour
     private float _speed = 4f;
 
     private Playerlvl2 _player;
+    private SpawnManagerlvl2 _spawn;
 
-    //handle to animator
-    //private Animator _anim;
-
-    //explosion effect
     [SerializeField]
     public GameObject explosionEffect;
 
@@ -26,17 +23,15 @@ public class enemy1 : MonoBehaviour
         {
             Debug.LogError("Player is null");
         }
-
-       /* _anim = GetComponent <Animator>();
-        if (_player == null)
-        {
-            Debug.LogError("Animator is null"); 
-        }*/
-
         _audioSource = GetComponent<AudioSource>();
         if(_audioSource == null)
         {
             Debug.LogError("Audio Source on enemy is NULL");
+        }
+        _spawn = GameObject.Find("SpawnManager").GetComponent<SpawnManagerlvl2>();
+        if(_spawn == null)
+        {
+            Debug.LogError("spawn is null");
         }
     }
 
@@ -88,12 +83,34 @@ public class enemy1 : MonoBehaviour
         //if other is laser
         //destroy laser
         //destroy us
-        if(other.tag == "Laser")
+        if(other.tag == "Laser" || other.tag == "TripleShot")
         {
             Destroy(other.gameObject);//destroy laser
             if(_player != null)
             {
                 _player.addScore(10);
+                _spawn.counter(1);
+            }
+
+            //destroy collider
+            Destroy(GetComponent<Collider2D>());
+            //trigger anim
+            //_anim.SetTrigger("OnEnemyDeath");
+            //_speed = 0;
+            //_audioSource.Play();
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+            //Destroy(this.gameObject,2.5f);//destroy enemy
+
+        }
+
+        if(other.tag == "FMJ")
+        {
+            
+            if(_player != null)
+            {
+                _player.addScore(10);
+                _spawn.counter(1);
             }
 
             //destroy collider

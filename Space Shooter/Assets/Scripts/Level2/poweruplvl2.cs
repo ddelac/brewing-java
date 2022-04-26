@@ -70,6 +70,9 @@ public class poweruplvl2 : MonoBehaviour
                     case 3:
                         _Player.addlife();
                         break;
+                    case 4:
+                        _Player.onFMJCollection();
+                        break;
 
                 }//end switch
                 

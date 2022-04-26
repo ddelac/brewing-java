@@ -8,6 +8,15 @@ TagManager:
   - Laser
   - SpawnManager
   - Shield
+  - TripleShot
+  - FMJ
+  - Boss_Missle
+  - Level3_Boss
+  - Level3_Player
+  - Bullet
+  - Bomb
+  - Missle
+  - EnemyLaser
   layers:
   - Default
   - TransparentFX
