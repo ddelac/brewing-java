@@ -54,6 +54,7 @@
      <Compile Include="Assets\level3\Scripts\level3BossLaser.cs" />
      <Compile Include="Assets\level3\Scripts\Level3UIManager.cs" />
      <Compile Include="Assets\level3\Scripts\boss4LaserAttack.cs" />
+     <Compile Include="Assets\Scripts\Level2\lvl2UI.cs" />
      <Compile Include="Assets\level3\Scripts\Bullet.cs" />
      <Compile Include="Assets\2D Pixel Spaceships (2 Small Ships + Explosions)\Scripts\SceneController.cs" />
      <Compile Include="Assets\Scripts\SpawnManager.cs" />
