@@ -129,7 +129,6 @@ public class Playerlvl2 : MonoBehaviour{
         if(other.tag == "EnemyLaser"){
             Destroy(other.gameObject);
             Damage();
-            Destroy(GetComponent<Collider2D>());
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
         }
     }
@@ -171,22 +170,14 @@ public class Playerlvl2 : MonoBehaviour{
         }
     }
 
-    public void onTripleShotCollection()
-    {
+    public void onTripleShotCollection(){
         _isTripleShotActive = true;
         StartCoroutine(TripleShotPowerDown());
     }
 
-
-    //IEnumerator tripleshot powerdownroutine
-    //wait 5 seconds
-    //set triple shot to false
-
-    IEnumerator TripleShotPowerDown()
-    {
+    IEnumerator TripleShotPowerDown(){
         yield return new WaitForSeconds(5.0f);
         _isTripleShotActive = false;
-
     }
 
         public void onFMJCollection()

@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637848611469841835
+      ticks: 637866284707615885
     m_Hash: 736701268
   m_LockFileStatus:
     m_FilePath: C:/Users/hulis/Documents/cs371/brewing-java/Space Shooter/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637848611469854341
+      ticks: 637866284707615885
     m_Hash: 3015287009
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

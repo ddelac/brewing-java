@@ -8,29 +8,19 @@ public class poweruplvl2 : MonoBehaviour
     private float _speed = 3.0f;//holds the global speed variable in m/s
     private Playerlvl2 _Player;//holds the player game object
 
-    //IDs for Powerups
-    //0 = Triple Shot
-    //1 = Speed
-    //2 = Shields
-    //3 = life
-    [SerializeField]//0 = Triple Shot, 1 = Speed, 2 = Shields. 3 life
+    [SerializeField]//0 = Triple Shot, 1 = Speed, 2 = Shields. 3 life, 4 FMJ
     private int powerupId;
-
-    //audio clip
     [SerializeField]
     private AudioClip _clip;
-    // Start is called before the first frame update
-    void Start()
-    {
+
+    void Start(){
         _Player = GameObject.Find("Player").GetComponent<Playerlvl2>();
+        if (_Player != null){
+            Debug.LogError("Player Null");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //move down at a speed of 3
-        //destroy when leave screen
-        //check for collision
+    void Update(){
         powerupMovement();
     }
 
@@ -42,13 +32,9 @@ public class poweruplvl2 : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    //ontriggercollision
-    //only collectable by the player(USE TAGS)
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        //if other is player
-        //set istripleshotactive to true
-        //destroy US
+
+    private void OnTriggerEnter2D(Collider2D other){
+
         if (other.tag == "Player")
         {
        

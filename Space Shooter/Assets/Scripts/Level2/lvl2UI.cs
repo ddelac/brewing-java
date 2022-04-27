@@ -26,54 +26,48 @@ public class lvl2UI : MonoBehaviour
     private Text _restartText;
     [SerializeField]
     private Text _menuText;
+    [SerializeField]
+    private Image _victory;
 
     //game manager variables
     private GameManager _gameManager;
 
+    private lvl2boss _boss;
+    private Asteroidlvl2 _asteroid;
+
     private float startTime;
     private bool finished = false;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        _scoreText.text = "Score: " + 0;//initialize the score at the top right of screen to 0
-        _gameOverText.gameObject.SetActive(false);//keep the game over text hidden while currentLives > 0
-        _restartText.gameObject.SetActive(false);//keep the restart text hidden while currentLives > 0
-        _menuText.gameObject.SetActive(false);//keep the restart text hidden while currentLives > 0
+    void Start(){
+        _scoreText.text = "Score: " + 0;
+        _gameOverText.gameObject.SetActive(false);
+        _restartText.gameObject.SetActive(false);
+        _menuText.gameObject.SetActive(false);
+        _victory.gameObject.SetActive(false);
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        if(_gameManager == null)
-        {
+        _boss = GameObject.Find("BOSS").GetComponent<lvl2boss>();
+        _asteroid = GameObject.Find("Asteroid").GetComponent<Asteroidlvl2>();
+        if(_gameManager == null){
             Debug.LogError("GameManager is null");
         }
         startTime = Time.time;
     }
 
-    //update the score displayed
-    public void UpdateScore(int playerScore)
-    {
-        _scoreText.text = "Score:" + playerScore; //update the score at the top right of the screen
+    public void UpdateScore(int playerScore){
+        _scoreText.text = "Score:" + playerScore;
     }
 
+    public void UpdateLives(int currentLives){
 
-    //update the lives displayed 
-    public void UpdateLives(int currentLives)
-    {
-        //display img sprite
-        //give it a new one based on the current lives index
         _LivesImg.sprite = _liveSprites[currentLives];
-        if(currentLives == 0)
-        {
+        if(currentLives == 0){
             GameOverSequence();
             dead();
         }
     }
 
-    //make the game over text flicker on and off for .5 seconds each
-    IEnumerator GameOverFlicker()
-    {
-        while (true)
-        {
+    IEnumerator GameOverFlicker(){
+        while (true){
             _gameOverText.text = "GAME OVER";
             yield return new WaitForSeconds(.5f);
             _gameOverText.text = "";
@@ -81,29 +75,38 @@ public class lvl2UI : MonoBehaviour
         }
     }
 
-    void GameOverSequence()
-    {
+    void GameOverSequence(){
         _gameManager.GameOver();
-        _gameOverText.gameObject.SetActive(true);//make the game over text visable to the player
+        _gameOverText.gameObject.SetActive(true);
         _restartText.gameObject.SetActive(true);
         _menuText.gameObject.SetActive(true);
-        StartCoroutine(GameOverFlicker());//make game over text flicker on and off
+        StartCoroutine(GameOverFlicker());
     }
 
     void Update(){
+        if(_boss.win == true){
+            w();
+        }
         if(finished){
             return;
         }
-        float t = Time.time - startTime;
-        string minutes = ((int) t/60).ToString();
-        string seconds = (t%60).ToString("f2");
-
-        _Timetext.text = "Time: " + minutes + ":" + seconds;
+        if(_asteroid.startTimer == true){
+            float t = Time.time - startTime;
+            string minutes = ((int) t/60).ToString();
+            string seconds = (t%60).ToString("f2");
+            _Timetext.text = "Time: " + minutes + ":" + seconds;
+        }
     }
 
     public void dead(){
         finished = true;
         _Timetext.color = Color.red;
+    }
+
+    public void w(){
+        finished = true;
+        _Timetext.color = Color.green;
+        _victory.gameObject.SetActive(true);
     }
 
 }

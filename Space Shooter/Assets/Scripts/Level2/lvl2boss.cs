@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class lvl2boss : MonoBehaviour{
     [SerializeField]
     public int lives;
@@ -12,12 +10,13 @@ public class lvl2boss : MonoBehaviour{
     [SerializeField]
     private GameObject _shieldVisualizer;
     [SerializeField]
-    private float _speed = 1.0f;
-    private Playerlvl2 _player;
+    public GameObject explosionEffect;
 
+    private Playerlvl2 _player;
     private lvl2bossEntrance _entrance;
     public bool invisible = false;
     public bool spawn = false;
+    public bool win = false;
     float timer;
     public GameObject Cube;
     
@@ -31,24 +30,35 @@ public class lvl2boss : MonoBehaviour{
         if(_entrance == null){
             Debug.LogError("Entrance is null");
         }
+        _shieldVisualizer.SetActive(false);
     }
 
     // Update is called once per frame
     void Update(){
         if(_entrance.enter == true){
             timer += Time.deltaTime;
-            if(timer > Random.Range(2f, 4f) ){
-                childs();
-                //spawn = true;
+            
+           if(timer > Random.Range(2f, 4f) ){
+               childs();
+               new WaitForSeconds(Random.Range(2, 7));
+                shield();
+                timer = 0;
             }
-            //if(timer > 7f){
-               // inv();
-               // timer = 0;
-            //}
-            invisible = false;
-            //spawn = false;
+
         }
       
+    }
+
+    public void shield(){
+        invisible = true;
+        _shieldVisualizer.SetActive(true);
+        StartCoroutine(shieldPowerDown());
+    }
+
+    IEnumerator shieldPowerDown(){
+        yield return new WaitForSeconds(5.0f);
+        invisible = false;
+        _shieldVisualizer.SetActive(false);
     }
 
     void childs(){
@@ -77,11 +87,27 @@ public class lvl2boss : MonoBehaviour{
 
     private void OnTriggerEnter2D(Collider2D other){
         if(other.tag == "FMJ" && invisible == false){
-            lives--;
+            if(_entrance.enter == true){
+                lives--;
+                _player.addScore(100);
+                if(lives == 0){
+                    Instantiate(explosionEffect, transform.position, Quaternion.identity);
+                    Destroy(this.gameObject);
+                    win = true;
+                }
+            }
 
         }
         if(other.tag == "TripleShot" && invisible == false){
-            lives--;
+            if(_entrance.enter == true){
+                lives--;
+                _player.addScore(100);
+                if(lives == 0){
+                    Instantiate(explosionEffect, transform.position, Quaternion.identity);
+                    Destroy(this.gameObject);
+                    win = true;
+                }
+            }
         }
 
 

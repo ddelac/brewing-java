@@ -10,6 +10,8 @@ public class Asteroidlvl2 : MonoBehaviour
     [SerializeField]
     private SpawnManagerlvl2 _spawnManager;
 
+    public bool startTimer = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class Asteroidlvl2 : MonoBehaviour
             Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
             Destroy(other.gameObject);
             Destroy(this.gameObject, 0.15f);
+            startTimer = true;
             _spawnManager.StartSpawning();
         }
     }

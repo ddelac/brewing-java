@@ -16,7 +16,7 @@ public class lvl2bossEntrance : MonoBehaviour{
     void Start()
     {
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManagerlvl2>();
-        transform.position = new Vector3(0, 10, 0);
+        transform.position = new Vector3(-5, 10, 0);
     }
 
     // Update is called once per frame

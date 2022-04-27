@@ -62,6 +62,12 @@ public class enemy2 : MonoBehaviour{
             Destroy(this.gameObject);
         }
 
+        if(other.tag == "Enemy"){
+            Destroy(GetComponent<Collider2D>());
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            Destroy(this.gameObject); 
+        }
+
         if(other.tag == "Laser" || other.tag == "TripleShot"){
             Destroy(other.gameObject);//destroy laser
             if(_player != null){

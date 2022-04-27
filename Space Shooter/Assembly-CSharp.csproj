@@ -67,6 +67,7 @@
      <Compile Include="Assets\level3\Scripts\bossEntrance.cs" />
      <Compile Include="Assets\level3\Scripts\Level3Manager.cs" />
      <Compile Include="Assets\Scripts\Level2\enemy2.cs" />
+     <Compile Include="Assets\Scripts\Level2\lvl2bossMovement.cs" />
      <Compile Include="Assets\level3\Scripts\bossLaser.cs" />
      <Compile Include="Assets\Scripts\Level2\Laserdown.cs" />
      <Compile Include="Assets\level3\Scripts\Level3_Player.cs" />
@@ -94,6 +95,7 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\UIManager.cs" />
      <Compile Include="Assets\Scripts\Powerup.cs" />
+     <Compile Include="Assets\Scripts\Settings\Settings.cs" />
      <None Include="Assets\Materials\Shaders\Galaxy.shader" />
      <None Include="Assets\EffectExamples\Misc Effects\Prefabs\Readme_Dissolve_Respawn_.txt" />
      <None Include="Assets\EffectExamples\Magic Effects\Shaders\Ice.shader" />

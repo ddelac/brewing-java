@@ -17,6 +17,7 @@ TagManager:
   - Bomb
   - Missle
   - EnemyLaser
+  - Boss
   layers:
   - Default
   - TransparentFX
