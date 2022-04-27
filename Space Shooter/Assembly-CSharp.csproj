@@ -94,7 +94,6 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\UIManager.cs" />
      <Compile Include="Assets\Scripts\Powerup.cs" />
-     <None Include="Assets\spritefont_and_other\document_and_picturelist\readme.txt" />
      <None Include="Assets\Materials\Shaders\Galaxy.shader" />
      <None Include="Assets\EffectExamples\Misc Effects\Prefabs\Readme_Dissolve_Respawn_.txt" />
      <None Include="Assets\EffectExamples\Magic Effects\Shaders\Ice.shader" />

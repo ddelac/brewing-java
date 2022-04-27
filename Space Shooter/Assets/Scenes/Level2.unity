@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f6e406cff84db41b46a2840a5cf498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kills: 20
+  kills: 10
   _enemyPrefab: {fileID: 8173173349905710874, guid: 1fab7dddc5332894c8f0dcaf7f240294, type: 3}
   _enemyPrefab2: {fileID: 5737954316567478547, guid: 04affc0c48ed5b643b27386c3ef56e2a, type: 3}
   _enemyPrefab3: {fileID: 8439075156839030799, guid: 51f9e47008a793c419db7637d15b8ef9, type: 3}
@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionPrefab: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3, type: 3}
-  _spawnManager: {fileID: 0}
+  _spawnManager: {fileID: 166010819}
 --- !u!1 &731827526
 GameObject:
   m_ObjectHideFlags: 0

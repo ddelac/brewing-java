@@ -15,6 +15,9 @@ public class MainMenu : MonoBehaviour
             Application.Quit();
             //UnityEditor.EditorApplication.isPlaying = false;
         }
+        if(x == 2){
+            SceneManager.LoadScene(5);
+        }
        
     }
 }

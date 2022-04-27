@@ -21,8 +21,12 @@ public class Level_Select : MonoBehaviour{
             Debug.Log("level3 selected");
         }
         if(x == 4){
+            SceneManager.LoadScene(6);
+            Debug.Log("level4 selected");
+        }
+        if(x == 5){
             SceneManager.LoadScene(5);
-            Debug.Log("level3 selected");
+            Debug.Log("Settings selected");
         }
         if(x == 0){
             SceneManager.LoadScene(0);
