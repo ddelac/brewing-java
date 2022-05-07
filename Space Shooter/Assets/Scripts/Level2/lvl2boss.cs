@@ -11,17 +11,20 @@ public class lvl2boss : MonoBehaviour{
     private GameObject _shieldVisualizer;
     [SerializeField]
     public GameObject explosionEffect;
+    [SerializeField]
+    public GameObject _healthBar;
 
     private Playerlvl2 _player;
+    public BossHealth health;
     private lvl2bossEntrance _entrance;
     public bool invisible = false;
     public bool spawn = false;
     public bool win = false;
     float timer;
-    public GameObject Cube;
     
 
     void Start(){
+        
         _player = GameObject.Find("Player").GetComponent<Playerlvl2>();
         if(_player == null){
             Debug.LogError("Player is null");
@@ -30,12 +33,14 @@ public class lvl2boss : MonoBehaviour{
         if(_entrance == null){
             Debug.LogError("Entrance is null");
         }
+         health.setMaxHealth(lives);
         _shieldVisualizer.SetActive(false);
     }
 
     // Update is called once per frame
     void Update(){
         if(_entrance.enter == true){
+            _healthBar.SetActive(true);
             timer += Time.deltaTime;
             
            if(timer > Random.Range(2f, 4f) ){
@@ -86,9 +91,11 @@ public class lvl2boss : MonoBehaviour{
     }
 
     private void OnTriggerEnter2D(Collider2D other){
+
         if(other.tag == "FMJ" && invisible == false){
             if(_entrance.enter == true){
                 lives--;
+                Damage();
                 _player.addScore(100);
                 if(lives == 0){
                     Instantiate(explosionEffect, transform.position, Quaternion.identity);
@@ -101,6 +108,7 @@ public class lvl2boss : MonoBehaviour{
         if(other.tag == "TripleShot" && invisible == false){
             if(_entrance.enter == true){
                 lives--;
+                Damage();
                 _player.addScore(100);
                 if(lives == 0){
                     Instantiate(explosionEffect, transform.position, Quaternion.identity);
@@ -112,6 +120,10 @@ public class lvl2boss : MonoBehaviour{
 
 
 
+    }
+
+    private void Damage(){
+        health.setHealth(lives);
     }
 
 

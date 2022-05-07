@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - Asteroid
     - Asteroidlvl2
     - Bomb
+    - BossHealth
     - BossMissle
     - BossShoot
     - Bullet
@@ -39,6 +40,7 @@ ScriptsOnlyBuild:
     - lvl2UI
     - lvl2boss
     - lvl2bossEntrance
+    - lvl2bossMovement
     - poweruplvl2
     - xmov
     Unity.Postprocessing.Runtime.dll:
@@ -59,6 +61,12 @@ ScriptsOnlyBuild:
     - UnityEngine.Rendering.PostProcessing.Vignette
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -140,29 +148,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2932}
     - Class: 114
-      Script: {instanceID: 2972}
+      Script: {instanceID: 2974}
     - Class: 114
-      Script: {instanceID: 3464}
+      Script: {instanceID: 3466}
     - Class: 114
-      Script: {instanceID: 3562}
+      Script: {instanceID: 3564}
     - Class: 114
-      Script: {instanceID: 3728}
+      Script: {instanceID: 3730}
     - Class: 114
-      Script: {instanceID: 3924}
+      Script: {instanceID: 3926}
     - Class: 114
-      Script: {instanceID: 4194}
+      Script: {instanceID: 4196}
     - Class: 114
-      Script: {instanceID: 4258}
+      Script: {instanceID: 4260}
     - Class: 114
-      Script: {instanceID: 4584}
+      Script: {instanceID: 4586}
     - Class: 114
-      Script: {instanceID: 4608}
+      Script: {instanceID: 4610}
     - Class: 114
-      Script: {instanceID: 4690}
+      Script: {instanceID: 4692}
     - Class: 114
-      Script: {instanceID: 4716}
+      Script: {instanceID: 4718}
     - Class: 114
-      Script: {instanceID: 4752}
+      Script: {instanceID: 4756}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -233,6 +241,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1546}
     - Class: 114
+      Script: {instanceID: 1712}
+    - Class: 114
       Script: {instanceID: 1796}
     - Class: 114
       Script: {instanceID: 2086}
@@ -251,41 +261,45 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2938}
     - Class: 114
-      Script: {instanceID: 3000}
+      Script: {instanceID: 2958}
     - Class: 114
-      Script: {instanceID: 3070}
+      Script: {instanceID: 3002}
     - Class: 114
-      Script: {instanceID: 3286}
+      Script: {instanceID: 3072}
     - Class: 114
       Script: {instanceID: 3288}
     - Class: 114
-      Script: {instanceID: 3340}
+      Script: {instanceID: 3290}
     - Class: 114
-      Script: {instanceID: 3396}
+      Script: {instanceID: 3342}
     - Class: 114
-      Script: {instanceID: 3464}
+      Script: {instanceID: 3398}
     - Class: 114
-      Script: {instanceID: 3562}
+      Script: {instanceID: 3466}
     - Class: 114
-      Script: {instanceID: 3612}
+      Script: {instanceID: 3564}
     - Class: 114
-      Script: {instanceID: 3640}
+      Script: {instanceID: 3614}
     - Class: 114
-      Script: {instanceID: 3924}
+      Script: {instanceID: 3642}
     - Class: 114
-      Script: {instanceID: 4258}
+      Script: {instanceID: 3926}
     - Class: 114
-      Script: {instanceID: 4278}
+      Script: {instanceID: 4260}
     - Class: 114
-      Script: {instanceID: 4504}
+      Script: {instanceID: 4280}
     - Class: 114
-      Script: {instanceID: 4560}
+      Script: {instanceID: 4506}
     - Class: 114
-      Script: {instanceID: 4584}
+      Script: {instanceID: 4562}
     - Class: 114
-      Script: {instanceID: 4608}
+      Script: {instanceID: 4586}
     - Class: 114
-      Script: {instanceID: 4752}
+      Script: {instanceID: 4610}
+    - Class: 114
+      Script: {instanceID: 4756}
+    - Class: 114
+      Script: {instanceID: 19970}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -376,19 +390,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2932}
     - Class: 114
-      Script: {instanceID: 2972}
+      Script: {instanceID: 2974}
     - Class: 114
-      Script: {instanceID: 3052}
+      Script: {instanceID: 3054}
     - Class: 114
-      Script: {instanceID: 3260}
+      Script: {instanceID: 3262}
     - Class: 114
-      Script: {instanceID: 3284}
+      Script: {instanceID: 3286}
     - Class: 114
-      Script: {instanceID: 3562}
+      Script: {instanceID: 3564}
     - Class: 114
-      Script: {instanceID: 4046}
+      Script: {instanceID: 4048}
     - Class: 114
-      Script: {instanceID: 4138}
+      Script: {instanceID: 4140}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -447,7 +461,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2932}
     - Class: 114
-      Script: {instanceID: 3036}
+      Script: {instanceID: 3038}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -500,9 +514,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2932}
     - Class: 114
-      Script: {instanceID: 3036}
+      Script: {instanceID: 3038}
     - Class: 114
-      Script: {instanceID: 4102}
+      Script: {instanceID: 4104}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -561,15 +575,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2944}
     - Class: 114
-      Script: {instanceID: 3036}
+      Script: {instanceID: 3038}
     - Class: 114
-      Script: {instanceID: 3644}
+      Script: {instanceID: 3646}
     - Class: 114
-      Script: {instanceID: 3814}
+      Script: {instanceID: 3816}
     - Class: 114
-      Script: {instanceID: 3962}
+      Script: {instanceID: 3964}
     - Class: 114
-      Script: {instanceID: 19882}
+      Script: {instanceID: 4738}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -729,7 +743,7 @@ ScriptsOnlyBuild:
     className: GroupTrack
   - hash:
       serializedVersion: 2
-      Hash: 8fa7126dcaa4680deff4f985861f53df
+      Hash: 963c4331acbf057241ca14da08153923
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: lvl2UI
@@ -939,6 +953,12 @@ ScriptsOnlyBuild:
     className: TMP_SubMesh
   - hash:
       serializedVersion: 2
+      Hash: 3cf156985df62fac63708d6bed3583bf
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: lvl2bossMovement
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -1053,7 +1073,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: f723316d9a0eb1ee51e7acbc7dd7a620
+      Hash: f734ab9cc1624cebf227e8fe841e4112
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Asteroidlvl2
@@ -1323,7 +1343,7 @@ ScriptsOnlyBuild:
     className: ScreenSpaceReflections
   - hash:
       serializedVersion: 2
-      Hash: 779e79b9ecaf9ede0b57438b8c28e0af
+      Hash: 059f3bb58770c219fda2a13b0a519138
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: lvl2boss
@@ -1383,6 +1403,12 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
+      Hash: 8b21061e9d037d307e029130da878344
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Settings
+  - hash:
+      serializedVersion: 2
       Hash: d6fc8d3165070298511ec776ea575626
     assemblyName: Unity.Postprocessing.Runtime.dll
     namespaceName: UnityEngine.Rendering.PostProcessing
@@ -1395,10 +1421,10 @@ ScriptsOnlyBuild:
     className: AmbientOcclusion
   - hash:
       serializedVersion: 2
-      Hash: 8b21061e9d037d307e029130da878344
+      Hash: 4b8dff74c0603f3e6246514a412ffcba
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Settings
+    className: BossHealth
   platform: 19
   scenePathNames:
   - Assets/Scenes/Main_Menu.unity
@@ -1407,4 +1433,5 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Level2.unity
   - Assets/Scenes/Level3.unity
   - Assets/Scenes/Settings.unity
-  playerPath: C:/Users/hulis/Desktop/Brew java/unity/Space Shooter.exe
+  playerPath: C:/Users/hulis/Documents/cs371/brewing-java/FinalGameWindows/Space
+    Shooter.exe

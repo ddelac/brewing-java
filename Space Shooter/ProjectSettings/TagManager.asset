@@ -18,6 +18,7 @@ TagManager:
   - Missle
   - EnemyLaser
   - Boss
+  - fmj
   layers:
   - Default
   - TransparentFX
